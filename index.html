@@ -16,7 +16,13 @@
     <div id="root"></div>
     <script type="text/babel">
       function MyApp() {
-        return <><Blurtext /><Three /></>;
+        const [count,setCount] = React.useState(0)
+        React.useEffect(() => {
+          setTimeout(() => {
+            setCount((pre) => pre + 1)
+          }, 7000)
+        }, [])
+        return <>{count ===0 && <Blurtext />}{count === 1 && <Three />}</>;
       }
 
       const container = document.getElementById("root");
